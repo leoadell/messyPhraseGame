@@ -1,0 +1,43 @@
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">New Phrase</span>
+    <form (ngSubmit)="onGuardarItem(formNew)" #formNew="ngForm" class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <input [(ngModel)]="item.description" #description="ngModel" type="text" name="description" id="description"
+            placeholder="Input and identifier description" minlength="8" maxlength="40" required>
+          <label>Desctiption</label>
+          <div *ngIf="desctiption.touched && !desctiption.valid">
+            <div *ngIf="desctiption.errors.required">Desctiption is mandatory</div>
+            <div *ngIf="desctiption.errors.minlength">Desctiption min lenght is
+              {{desctiption.errors.minlength.requiredLength}} characters.</div>
+          </div>
+        </div>
+        <div class="input-field col s12">
+          <input [(ngModel)]="item.phrase" #phrase="ngModel" type="text" name="phrase" id="phrase"
+            placeholder="Input actual phrase" minlength="10" maxlength="200" required>
+          <label>Phrase</label>
+          <div *ngIf="phrase.touched && !phrase.valid">
+            <div *ngIf="phrase.errors.required">The phrase is mandatory</div>
+            <div *ngIf="phrase.errors.minlength">Phrase min size is {{phrase.errors.minlength.requiredLength}} chars.
+            </div>
+          </div>
+        </div>
+        <div class="input-field col s12">
+          <input [(ngModel)]="item.shuffle" #shuffle="ngModel" type="text" name="shuffle" id="shuffle"
+            placeholder="click SHUFFLE Button" minlength="10" maxlength="200" readonly>
+          <label readonly>Shuffled phrase</label>
+        </div>
+
+        <button (click)="shufflePhrase($event, item)" type="button" class="btn orange right">Shuffle
+          <i class="material-icons right">shuffle</i>
+        </button>
+        
+        <button type="submit" class="btn green right">Save
+          <i class="material-icons right">add_circle</i>
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

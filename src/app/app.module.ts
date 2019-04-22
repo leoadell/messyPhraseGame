@@ -5,19 +5,19 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireModule } from 'angularfire2';
 import { FormsModule } from '@angular/forms';
 
-import { CursoService } from './services/curso.service';
+import { ItemService } from './services/Item.service';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { CursosComponent } from './components/cursos/cursos.component';
-import { AddCursoComponent } from './components/add-curso/add-curso.component';
+import { ItemsComponent } from './components/items/items.component';
+import { AddItemComponent } from './components/add-item/add-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    CursosComponent,
-    AddCursoComponent
+    ItemsComponent,
+    AddItemComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +25,7 @@ import { AddCursoComponent } from './components/add-curso/add-curso.component';
     AngularFirestoreModule,
     FormsModule
   ],
-  providers: [CursoService],
+  providers: [ItemService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
