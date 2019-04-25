@@ -6,11 +6,11 @@
         <div class="input-field col s12">
           <input [(ngModel)]="item.description" #description="ngModel" type="text" name="description" id="description"
             placeholder="Input and identifier description" minlength="8" maxlength="40" required>
-          <label>Desctiption</label>
-          <div *ngIf="desctiption.touched && !desctiption.valid">
-            <div *ngIf="desctiption.errors.required">Desctiption is mandatory</div>
-            <div *ngIf="desctiption.errors.minlength">Desctiption min lenght is
-              {{desctiption.errors.minlength.requiredLength}} characters.</div>
+          <label>Description</label>
+          <div *ngIf="description.touched && !description.valid">
+            <div *ngIf="description.errors.required">Description is mandatory</div>
+            <div *ngIf="description.errors.minlength">Description min lenght is
+              {{description.errors.minlength.requiredLength}} characters.</div>
           </div>
         </div>
         <div class="input-field col s12">

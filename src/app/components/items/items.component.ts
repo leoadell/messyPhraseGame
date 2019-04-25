@@ -8,31 +8,32 @@ import { ItemService } from '../../services/Item.service';
   styleUrls: ['./items.component.css']
 })
 export class ItemsComponent implements OnInit {
-  Items: ItemInterface[];
+  items: ItemInterface[];
   editState: boolean = false;
-  ItemToEdit: ItemInterface;
-  constructor(private itemServiceVar: ItemService) { }
-
+  itemToEdit: ItemInterface;
+    
+  constructor(private itemService: ItemService) { }
+  
   ngOnInit() {
-    this.itemServiceVar.getItems().subscribe(Items => {
-      this.Items = Items;
+    this.itemService.getItems().subscribe(items => {
+      this.items = items;
     });
   }
-  editItem(event, Item: ItemInterface) {
+  editItem(event, item: ItemInterface) {
     this.editState = true;
-    this.ItemToEdit = Item;
+    this.itemToEdit = item;
   }
-  onUdpdateItem(Item: ItemInterface) {
-    this.itemServiceVar.updateItem(Item);
+  onUdpdateItem(item: ItemInterface) {
+    this.itemService.updateItem(item);
     this.clearState();
   }
-  deleteItem(event, Item: ItemInterface) {
-    this.itemServiceVar.deleteItem(Item);
+  deleteItem(event, item: ItemInterface) {
+    this.itemService.deleteItem(item);
     this.clearState();
   }
   clearState() {
     this.editState = false;
-    this.ItemToEdit = null;
+    this.itemToEdit = null;
   }
 
 }
