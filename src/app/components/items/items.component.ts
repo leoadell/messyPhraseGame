@@ -54,6 +54,12 @@ export class ItemsComponent implements OnInit {
     for (let i = 0; i < phraseArray.length; i++) {
       shuffledPhrase[i] = this.shuffleWord(phraseArray[i]);
     }
+
+    for (let i = 0; i < phraseArray.length; i++) {
+      shuffledPhrase[i] = this.shuffleWord(phraseArray[i]);
+    }
+
+
     item.shuffle = shuffledPhrase.join(' ');
   }
 
