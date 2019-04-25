@@ -11,6 +11,8 @@ export class ItemsComponent implements OnInit {
   items: ItemInterface[];
   editState: boolean = false;
   itemToEdit: ItemInterface;
+  playState: boolean=false;
+  itemToPlay: ItemInterface;
  
   constructor(private itemService: ItemService) { }
 
@@ -19,20 +21,28 @@ export class ItemsComponent implements OnInit {
       this.items = items;
     });
   }
+
   editItem(event, item: ItemInterface) {
     this.editState = true;
     this.itemToEdit = item;
+  }
+  playItem(event, item: ItemInterface) {
+    this.playState = true;
+    this.itemToPlay = item;
   }
   onUdpdateItem(item: ItemInterface) {
     this.itemService.updateItem(item);
     this.clearState();
   }
+
   deleteItem(event, item: ItemInterface) {
     this.itemService.deleteItem(item);
     this.clearState();
   }
+
   clearState() {
     this.editState = false;
+    this.playState=false;
     this.itemToEdit = null;
   }
 

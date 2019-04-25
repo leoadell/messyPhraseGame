@@ -1,18 +1,6 @@
 <div *ngIf="items?.length > 0;else noItems">
   <ul *ngFor="let item of items" class="collection">
     <li class="collection-item">
-       <!-- Modal Trigger -->
-       <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
-
-       <!-- Modal Structure -->
-       <div id="modal1" class="modal">
-         <div class="modal-content">
-           <h4>hola</h4>
-         </div>
-         <div class="modal-footer">
-           <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-         </div>
-       </div>
       <a href="#" class="secondary-content">
         <i *ngIf="editState == false" (click)="editItem($event, item)" class="material-icons">mode_edit</i>
         <i *ngIf="editState == false" (click)="playItem($event, item)" class="material-icons">play_circle_outline</i>
@@ -20,6 +8,9 @@
       </a>
       <blockquote>{{item.description}}</blockquote>
       <br>
+      <div *ngIf="playState && itemToPlay.id == item.id" class="container-updateItem">
+        <h4>{{item.shuffle}}</h4>
+      </div>
       <div *ngIf="editState && itemToEdit.id == item.id" class="container-updateItem">
         <form (ngSubmit)="onUdpdateItem(item)" class="col s12">
           <div class="row">
