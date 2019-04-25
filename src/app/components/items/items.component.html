@@ -1,8 +1,21 @@
 <div *ngIf="items?.length > 0;else noItems">
   <ul *ngFor="let item of items" class="collection">
     <li class="collection-item">
+       <!-- Modal Trigger -->
+       <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+       <!-- Modal Structure -->
+       <div id="modal1" class="modal">
+         <div class="modal-content">
+           <h4>hola</h4>
+         </div>
+         <div class="modal-footer">
+           <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+         </div>
+       </div>
       <a href="#" class="secondary-content">
         <i *ngIf="editState == false" (click)="editItem($event, item)" class="material-icons">mode_edit</i>
+        <i *ngIf="editState == false" (click)="playItem($event, item)" class="material-icons">play_circle_outline</i>
         <i *ngIf="editState && itemToEdit.id == item.id" (click)="clearState()" class="material-icons">close</i>
       </a>
       <blockquote>{{item.description}}</blockquote>
@@ -13,17 +26,14 @@
             <div class="input-field col s12">
               <input [(ngModel)]="item.description" #desctiption="ngModel" type="text" name="desctiption"
                 id="desctiption" placeholder="Description">
-              <label>Desctiption</label>
             </div>
             <div class="input-field col s12">
               <input [(ngModel)]="item.phrase" #phrase="ngModel" type="text" name="phrase" id="phrase"
                 placeholder="Phrase">
-              <label>Phrase</label>
             </div>
             <div class="input-field col s12">
               <input [(ngModel)]="item.shuffle" #shuffle="ngModel" type="text" name="shuffle" id="shuffle"
                 placeholder="Shuffle">
-              <label>Shuffle</label>
             </div>
             <div class="input-field col s4">
               <button (click)="deleteItem($event, item)" class="btn red right">Delete
@@ -31,7 +41,7 @@
               </button>
             </div>
             <div class="input-field col s4">
-              <button type="submit" class="btn orange">Shuffle
+              <button type="button" (click)="shufflePhrase($event, item)" class="btn orange">Shuffle
                 <i class="material-icons right">shuffle</i>
               </button>
             </div>

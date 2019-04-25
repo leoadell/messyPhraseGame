@@ -11,9 +11,9 @@ export class ItemsComponent implements OnInit {
   items: ItemInterface[];
   editState: boolean = false;
   itemToEdit: ItemInterface;
-    
+ 
   constructor(private itemService: ItemService) { }
-  
+
   ngOnInit() {
     this.itemService.getItems().subscribe(items => {
       this.items = items;
@@ -36,4 +36,23 @@ export class ItemsComponent implements OnInit {
     this.itemToEdit = null;
   }
 
+  public shufflePhrase(event, item: ItemInterface) {
+    let upperPhrase = item.phrase.toUpperCase();
+    item.shuffle = upperPhrase;
+    let shuffledPhrase = [];
+    let phraseArray = upperPhrase.split(' ');
+    for (let i = 0; i < phraseArray.length; i++) {
+      shuffledPhrase[i] = this.shuffleWord(phraseArray[i]);
+    }
+    item.shuffle = shuffledPhrase.join(' ');
+  }
+
+  public shuffleWord(word) {
+    let suffledWord = '';
+    word = word.split('');
+    while (word.length > 0) {
+      suffledWord += word.splice(word.length * Math.random() << 0, 1);
+    }
+    return suffledWord;
+  }
 }

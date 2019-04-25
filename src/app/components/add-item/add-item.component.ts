@@ -38,7 +38,7 @@ export class AddItemComponent implements OnInit {
 
   }
 
-  shufflePhrase(event, item: ItemInterface) {
+  public shufflePhrase(event, item: ItemInterface) {
     let upperPhrase = item.phrase.toUpperCase();
     item.shuffle = upperPhrase;
     let shuffledPhrase = [];
@@ -49,7 +49,7 @@ export class AddItemComponent implements OnInit {
     item.shuffle = shuffledPhrase.join(' ');
   }
 
-  shuffleWord(word) {
+  public shuffleWord(word) {
     let suffledWord = '';
     word = word.split('');
     while (word.length > 0) {
